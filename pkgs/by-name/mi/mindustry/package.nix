@@ -6,9 +6,8 @@
   copyDesktopItems,
   fetchFromGitHub,
   gradle,
-  jdk17,
   zenity,
-
+  temurin-bin-17,
   # for arc
   SDL2,
   pkg-config,
@@ -18,13 +17,10 @@
   alsa-lib,
   alsa-plugins,
   glew,
-
   # for soloud
   libpulseaudio ? null,
   libjack2 ? null,
-
   nixosTests,
-
   # Make the build version easily overridable.
   # Server and client build versions must match, and an empty build version means
   # any build is allowed, so this parameter acts as a simple whitelist.
@@ -32,16 +28,14 @@
   makeBuildVersion ? (v: v),
   enableClient ? true,
   enableServer ? true,
-
-  enableWayland ? false,
+  enableWayland ? true,
 }:
-
 let
   pname = "mindustry";
-  version = "154.3";
+  version = "157.4";
   buildVersion = makeBuildVersion version;
 
-  jdk = jdk17;
+  jdk = temurin-bin-17;
 
   Mindustry = fetchFromGitHub {
     name = "Mindustry-source";
@@ -72,7 +66,6 @@ let
     icon = "mindustry";
     categories = [ "Game" ];
   };
-
 in
 assert lib.assertMsg (
   enableClient || enableServer
