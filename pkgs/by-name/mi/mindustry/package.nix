@@ -7,7 +7,7 @@
   fetchFromGitHub,
   gradle,
   zenity,
-  temurin-bin-17,
+  jdk17,
   # for arc
   SDL2,
   pkg-config,
@@ -35,7 +35,7 @@ let
   version = "157.4";
   buildVersion = makeBuildVersion version;
 
-  jdk = temurin-bin-17;
+  jdk =   jdk17;
 
   Mindustry = fetchFromGitHub {
     name = "Mindustry-source";
@@ -55,8 +55,8 @@ let
     owner = "Anuken";
     repo = "soloud";
     # This is pinned in Arc's arc-core/build.gradle
-    tag = "2025.12.01";
-    hash = "sha256-I+VZW34eRGn1RJmK8e9nVSXIFSOK/pER+xEhmXeUB4Y=";
+    tag = "2026.02.03";
+    hash = "sha256-Klng3c/AN5oYxnU+jeTnlPEThhKlpGADgmygjJRAJDg=";
   };
 
   desktopItem = makeDesktopItem {
